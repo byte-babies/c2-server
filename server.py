@@ -8,6 +8,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 def index():
     return render_template("index.html")
 
+@app.route('/param_reader')
+def param_reader():
+    print(request.args)
+    flag = request.args.get('flag')
+    print(f"flag is {flag}")
+    return "hello warbler"
+
 @app.route('/buttoncatcher', methods=['POST'])
 def buttoncatcher():
     print(request.method)
