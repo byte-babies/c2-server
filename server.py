@@ -11,8 +11,8 @@ PORT = 5000
 def index():
     return render_template("index.html", port=PORT)
 
-@app.route('/param_reader')
-def param_reader():
+@app.route('/paramreader')
+def paramreader():
     print(request.args)
     flag = request.args.get('flag')
     print(f"flag is {flag}")
