@@ -5,9 +5,11 @@ app = Flask(__name__)
 cors = CORS(app) # allow CORS for all domains on all routes.
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+PORT = 5000
+
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", port=PORT)
 
 @app.route('/param_reader')
 def param_reader():
@@ -26,5 +28,5 @@ def buttoncatcher():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=5000)
-    args = parser.parse_args()
-    app.run(host="0.0.0.0", port=args.port, debug=True)
+    PORT = parser.parse_args().port
+    app.run(host="0.0.0.0", port=PORT, debug=True)
